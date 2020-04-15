@@ -2,13 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:login_animacoes/widgets/form.dart';
 import 'package:login_animacoes/widgets/register-btn.dart';
+import 'package:login_animacoes/widgets/stagger-animation.dart';
 
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
+  AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(
+        seconds: 2,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +40,11 @@ class _LoginState extends State<Login> {
           ),
         ),
         child: ListView(
+          physics: BouncingScrollPhysics(),
           padding: EdgeInsets.zero,
           children: <Widget>[
             Stack(
+              alignment: Alignment.bottomCenter,
               children: <Widget>[
                 Column(
                   children: <Widget>[
@@ -34,6 +56,9 @@ class _LoginState extends State<Login> {
                     FormContainer(),
                     RegisterButton()
                   ],
+                ),
+                StaggerAnimation(
+                  controller: _animationController.view,
                 )
               ],
             ),
