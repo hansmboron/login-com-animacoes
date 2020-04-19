@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:login_animacoes/pages/home.dart';
 import 'package:login_animacoes/widgets/form.dart';
 import 'package:login_animacoes/widgets/register-btn.dart';
 import 'package:login_animacoes/widgets/stagger-animation.dart';
@@ -21,6 +22,13 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
         seconds: 2,
       ),
     );
+
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+      }
+    });
   }
 
   @override
