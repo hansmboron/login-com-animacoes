@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
+// import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:login_animacoes/widgets/stagger-anim-home.dart';
 
 class Home extends StatefulWidget {

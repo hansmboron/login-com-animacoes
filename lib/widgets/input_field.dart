@@ -5,18 +5,33 @@ class InputField extends StatelessWidget {
   final bool obscure;
   final IconData icon;
   final TextInputType type;
+  final Function onChanged;
+  final String errorText;
 
-  const InputField({Key key, this.hint, this.obscure, this.icon, this.type})
+  const InputField(
+      {Key key,
+      this.hint,
+      this.obscure,
+      this.icon,
+      this.type,
+      this.onChanged,
+      this.errorText})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       keyboardType: type,
+      onChanged: onChanged,
       obscureText: obscure,
       style: TextStyle(fontSize: 17, color: Colors.white),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(16.0),
+        errorText: errorText,
+        errorStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.redAccent,
+        ),
         prefixIcon: Container(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           margin: const EdgeInsets.only(right: 8.0),

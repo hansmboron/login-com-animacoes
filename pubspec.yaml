@@ -10,12 +10,17 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
+  flutter_icons: ^1.0.0+1
+  google_fonts: ^0.4.0
+  flutter_mobx: ^1.1.0
+  mobx: ^1.1.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_icons: ^1.0.0+1
-  google_fonts: ^0.4.0
+  build_runner:
+  mobx_codegen:
 
 flutter:
   uses-material-design: true
