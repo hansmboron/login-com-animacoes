@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:login_animacoes/controllers/ctrl-login.dart';
 
 class StaggerAnimation extends StatelessWidget {
   final AnimationController controller;
+  final ctrl = Controller();
 
   StaggerAnimation({this.controller})
       : btnSqz = Tween(
@@ -28,39 +31,44 @@ class StaggerAnimation extends StatelessWidget {
   final Animation<double> btnZoom;
 
   Widget _buildAnimation(BuildContext context, Widget child) {
-    return Padding(
-      padding: EdgeInsets.only(
-        bottom: 80,
-      ),
-      child: InkWell(
-        onTap: () {
-          controller.forward();
-        },
-        child: Hero(
-          tag: 'fade',
-          child: btnZoom.value <= 70
-              ? Container(
-                  width: btnSqz.value,
-                  height: 50,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Colors.deepOrange,
-                      borderRadius: BorderRadius.all(Radius.circular(30.0))),
-                  child: _buildInside(context),
-                )
-              : Container(
-                  width: btnZoom.value,
-                  height: btnZoom.value,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.deepOrange,
-                    shape: btnZoom.value < 480
-                        ? BoxShape.circle
-                        : BoxShape.rectangle,
-                  ),
-                ),
-        ),
-      ),
+    return Observer(
+      builder: (_) {
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: 80,
+          ),
+          child: InkWell(
+            onTap: () {
+              controller.forward();
+            },
+            child: Hero(
+              tag: 'fade',
+              child: btnZoom.value <= 70
+                  ? Container(
+                      width: btnSqz.value,
+                      height: 50,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Colors.deepOrange,
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(30.0))),
+                      child: _buildInside(context),
+                    )
+                  : Container(
+                      width: btnZoom.value,
+                      height: btnZoom.value,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.deepOrange,
+                        shape: btnZoom.value < 480
+                            ? BoxShape.circle
+                            : BoxShape.rectangle,
+                      ),
+                    ),
+            ),
+          ),
+        );
+      },
     );
   }
 

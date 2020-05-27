@@ -9,14 +9,12 @@ class InputField extends StatelessWidget {
   final String errorText;
 
   const InputField(
-      {Key key,
-      this.hint,
+      {this.hint,
       this.obscure,
       this.icon,
       this.type,
       this.onChanged,
-      this.errorText})
-      : super(key: key);
+      this.errorText});
 
   @override
   Widget build(BuildContext context) {

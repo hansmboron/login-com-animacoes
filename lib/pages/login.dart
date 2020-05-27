@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:login_animacoes/pages/home.dart';
 import 'package:login_animacoes/widgets/form.dart';
 import 'package:login_animacoes/widgets/register-btn.dart';
 import 'package:login_animacoes/widgets/stagger-animation.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -58,8 +58,8 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(top: 60, bottom: 35),
-                      child: Icon(Ionicons.ios_beer,
-                          color: Colors.white, size: 140),
+                      child:
+                          Icon(EvaIcons.music, color: Colors.white, size: 140),
                     ),
                     FormContainer(),
                     RegisterButton()

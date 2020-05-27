@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:login_animacoes/controllers/ctrl-login.dart';
 import 'package:login_animacoes/widgets/input_field.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
 class FormContainer extends StatelessWidget {
+  final ctrl = Controller();
   @override
   Widget build(BuildContext context) {
-    final _ctrl = Controller();
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
       child: Form(
@@ -17,20 +17,20 @@ class FormContainer extends StatelessWidget {
               children: <Widget>[
                 // campo de email
                 InputField(
-                  onChanged: _ctrl.login.changeEmail,
-                  errorText: _ctrl.validateEmail(),
+                  onChanged: ctrl.login.changeEmail,
+                  errorText: ctrl.validateEmail(),
                   type: TextInputType.emailAddress,
                   hint: 'Digite seu Email',
-                  icon: Ionicons.ios_person,
+                  icon: EvaIcons.person,
                   obscure: false,
                 ),
                 SizedBox(height: 25),
                 // campo de senha
                 InputField(
-                  onChanged: _ctrl.login.changePass,
-                  errorText: _ctrl.validatePass(),
+                  onChanged: ctrl.login.changePass,
+                  errorText: ctrl.validatePass(),
                   hint: 'Digite sua Senha',
-                  icon: Ionicons.ios_lock,
+                  icon: EvaIcons.lock,
                   obscure: true,
                 )
               ],
